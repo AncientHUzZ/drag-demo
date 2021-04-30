@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-	  selectedItem: null,
+	  selectedItem: {},
     },
 	mutations: {
 	  SET_SELECTED_ITEM:(state,payload) => {

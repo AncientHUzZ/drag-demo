@@ -25,7 +25,9 @@
                         <drag-content-page :pageSource="sourceData"></drag-content-page>
                     </div>
                 </div>
-                <div class="component-config"></div>
+                <div class="component-config">
+                    <component-config :current-page-item="selectedPageItem"></component-config>
+                </div>
             </div>
         </el-main>
     </el-container>
@@ -35,12 +37,19 @@
     import filed from "./filed";
 	import Draggable from 'vuedraggable'
     import DragContentPage from './components/drag-content-page'
+    import ComponentConfig from './components/component-config'
 	export default {
 		name: "drag-index",
 		components: {
 			Draggable,
-			DragContentPage
+			DragContentPage,
+			ComponentConfig
 		},
+        computed:{
+			selectedPageItem() {
+				return this.$store.state.selectedItem
+			}
+        },
         data() {
 			return {
                 componentList: filed,
