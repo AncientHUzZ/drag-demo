@@ -1,7 +1,7 @@
 <template>
     <div class="config">
         <el-tabs v-model="defaultTab">
-            <el-tab-pane label="组件配置" name="first">
+            <el-tab-pane label="组件设置" name="first">
                 <config-item :source="currentPageItem"></config-item>
             </el-tab-pane>
         </el-tabs>

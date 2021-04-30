@@ -16,7 +16,7 @@
 		methods: {
 			// 获取组件
 			getComponent: function(){
-				console.log('component:', this.source)
+				// console.log('component:', this.source)
 				if (this.source.type) {
 					const prefix = 'ymf-'
 					const suffix = '-config'

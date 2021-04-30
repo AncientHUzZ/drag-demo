@@ -8,7 +8,7 @@
                 <div class="component-selection">
                     <div style="padding: 10px">
                         <div v-for="(field, index) in componentList" :key="index" class="field-list">
-                            <div class="field-title">{{field.title}}</div>
+                            <h3>{{field.title}}</h3>
                             <div>
                                 <draggable :list="field.list" :sort="false"
                                            :group="{ name: 'custom-page', pull: 'clone', put: false }">
@@ -88,16 +88,11 @@
         background: #f7f8f9;
         height: calc(100vh - 80px);
         .component-selection {
-            width: 400px;
+            width: 500px;
             height: 100%;
             background: #FFFFFF;
             .field-list{
                 width: 100%;
-                .field-title{
-                    text-align: left;
-                    font-weight: 700;
-                    font-size: 18px;
-                }
                 .field-label{
                     width: 120px;
                     margin: 10px;
@@ -106,7 +101,7 @@
             }
         }
         .component-config {
-            width: 400px;
+            width: 500px;
             height: 100%;
             background: #FFFFFF;
         }
