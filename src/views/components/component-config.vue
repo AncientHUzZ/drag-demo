@@ -26,7 +26,7 @@
 			currentPageItem: {
 				deep:true,
                 handler:(newValue) => {
-					console.log('newConfig:', newValue)
+					// console.log('newConfig:', newValue)
                 }
             }
         },

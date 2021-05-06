@@ -39,7 +39,7 @@ export default [
 				uuid: '',
 				type: 'table',
 				title: '表格',
-				thead: false, //是否添加表头
+				thead: true, //是否显示表头
 				theadData: ['示例1','示例2'], //表头数据源
 				tdData: [ //表格内容 默认2*2
 					{
