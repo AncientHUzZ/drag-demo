@@ -104,6 +104,8 @@
             width: 500px;
             height: 100%;
             background: #FFFFFF;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
         .html-edit-area {
             width: auto;
