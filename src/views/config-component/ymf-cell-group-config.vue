@@ -67,4 +67,9 @@
     .ymf-cell-group-config {
         padding: 5px;
     }
+    .field-title{
+        text-align: left;
+        font-weight: 700;
+        font-size: 18px;
+    }
 </style>
