@@ -105,7 +105,7 @@ export default [
 				uuid: '',
 				type: 'form',
 				title: '表单区域',
-				labelWidth: '100px',// 表单项 label 宽度
+				labelWidth: '100',// 表单项 label 宽度
 				labelAlign: 'left',// 表单项 label 对齐方式 可选值为 center right
 				inputAlign: 'left', //输入框对齐方式 可选值为 center right
 				colon: false, //是否在 label 后面添加冒号

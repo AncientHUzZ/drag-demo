@@ -1,8 +1,9 @@
 <template>
     <div class="flex-border">
         <van-row :gutter="source.gutter" :justify="source.justify" style="min-height: 100px">
-            <van-col :span="count" v-for="(item,index) in source.itemDataSourceList" :key="index" style="min-height: 100px">
-                <div :class="{ 'is-border':count > 1 }" class="flex-basic">
+            <van-col :span="count" v-for="(item,index) in source.itemDataSourceList" :key="index" style="min-height: 100px"
+                     :class="{ 'is-border':count > 1 }">
+                <div class="flex-basic">
                     <drag-page :pageSource="item"></drag-page>
                 </div>
             </van-col>
