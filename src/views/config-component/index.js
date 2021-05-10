@@ -6,6 +6,8 @@ import YmfCellConfig from './ymf-cell-config'
 import YmfDividerConfig from './ymf-divider-config'
 import YmfFlexBoxConfig from './ymf-flexbox-config'
 import YmfFormConfig from './ymf-form-config'
+import YmfFieldConfig from './ymf-field-config'
+import YmfStepperConfig from './ymf-stepper-config'
 
 const components = [
 	YmfSwipeConfig,
@@ -15,7 +17,9 @@ const components = [
 	YmfCellConfig,
 	YmfDividerConfig,
 	YmfFlexBoxConfig,
-	YmfFormConfig
+	YmfFormConfig,
+	YmfFieldConfig,
+	YmfStepperConfig
 ]
 
 export default {

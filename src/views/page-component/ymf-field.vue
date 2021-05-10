@@ -8,6 +8,7 @@
                    :maxlength="source.maxLength"
                    :disabled="source.disabled"
                    :readonly="source.readonly"
+                   :show-word-limit="source.showWordLimit"
         />
     </div>
 </template>

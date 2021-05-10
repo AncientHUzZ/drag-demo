@@ -1,6 +1,8 @@
 /**
  * 可拖拽组件数据列表
  */
+import fa from "element-ui/src/locale/lang/fa";
+
 export default [
 	{
 		title: '数据展示组件',
@@ -131,6 +133,7 @@ export default [
 				maxlength: 200, // 最大输入字符
 				disabled: false, //是否禁用输入框
 				readonly: false, //是否只读
+				showWordLimit: false //是否显示字数统计
 			},
 			{
 				uuid: '',

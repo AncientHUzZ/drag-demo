@@ -9,6 +9,23 @@
                         <template #append>像素(px)</template>
                     </el-input>
                 </el-form-item>
+                <el-form-item label="label位置">
+                    <el-radio-group v-model="source.labelAlign">
+                        <el-radio label="left">左对齐</el-radio>
+                        <el-radio label="center">居中</el-radio>
+                        <el-radio label="right">右对齐</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="输入框位置">
+                    <el-radio-group v-model="source.inputAlign">
+                        <el-radio label="left">左对齐</el-radio>
+                        <el-radio label="center">居中</el-radio>
+                        <el-radio label="right">右对齐</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="冒号后缀">
+                    <el-switch v-model="source.colon" active-text="是" inactive-text="否"></el-switch>
+                </el-form-item>
             </el-form>
         </div>
     </div>
