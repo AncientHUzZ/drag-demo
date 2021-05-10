@@ -8,6 +8,11 @@ import YmfFlexBoxConfig from './ymf-flexbox-config'
 import YmfFormConfig from './ymf-form-config'
 import YmfFieldConfig from './ymf-field-config'
 import YmfStepperConfig from './ymf-stepper-config'
+import YmfCalenderConfig from './ymf-calender-config'
+import YmfSwitchConfig from './ymf-switch-config'
+import YmfPickerConfig from './ymf-picker-config'
+import YmfRadioConfig from './ymf-radio-config'
+import YmfCheckboxConfig from './ymf-checkbox-config'
 
 const components = [
 	YmfSwipeConfig,
@@ -19,7 +24,12 @@ const components = [
 	YmfFlexBoxConfig,
 	YmfFormConfig,
 	YmfFieldConfig,
-	YmfStepperConfig
+	YmfStepperConfig,
+	YmfCalenderConfig,
+	YmfSwitchConfig,
+	YmfPickerConfig,
+	YmfRadioConfig,
+	YmfCheckboxConfig
 ]
 
 export default {

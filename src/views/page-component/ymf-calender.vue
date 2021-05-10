@@ -14,6 +14,7 @@
                       :min-date="source.minDate"
                       :max-date="source.maxDate"
                       :default-date="source.defaultDate"
+                      readonly
                       @confirm="onConfirm" />
     </div>
 </template>

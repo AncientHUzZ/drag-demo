@@ -169,8 +169,8 @@ export default [
 				value: false, //绑定值 只支持true和false
 				disabled: false, //是否为禁用状态
 				size: '20', // 开关尺寸，默认单位为px
-				activeValue: true, //打开时对应的值
-				inactiveValue: false //关闭时对应的值
+				activeValue: '', //打开时对应的值
+				inactiveValue: '' //关闭时对应的值
 			},
 			{
 				uuid: '',

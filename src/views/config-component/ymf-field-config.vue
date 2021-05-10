@@ -7,7 +7,7 @@
                 <el-form-item label="名称">
                     <el-input v-model="source.title" placeholder="请输入名称"></el-input>
                 </el-form-item>
-                <el-form-item label="label位置">
+                <el-form-item label="类型">
                     <el-radio-group v-model="source.fieldType" @change="checkType">
                         <el-radio label="text">文本框</el-radio>
                         <el-radio label="number">数字框</el-radio>
