@@ -7,7 +7,7 @@
                    :clearable="source.clearable"
                    :maxlength="source.maxLength"
                    :disabled="source.disabled"
-                   :readonly="source.readonly"
+                   readonly
                    :show-word-limit="source.showWordLimit"
         />
     </div>

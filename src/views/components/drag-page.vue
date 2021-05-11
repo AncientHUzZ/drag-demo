@@ -30,7 +30,7 @@
 		},
         data() {
 		    return {
-
+                formComponentList:['checkbox','radio','picker','switch','calender','stepper','field','divider']
             }
         },
         computed: {
@@ -61,6 +61,12 @@
                 	this.$message.warning('请勿在表单区域内重复添加表单！')
                     this.deletePageItem(newIndex)
                     return
+                }
+                //判断表单内是否添加了非法组件
+                if (this.isForm && currentAddItem && !this.formComponentList.includes(currentAddItem.type)) {
+					this.$message.warning('请勿在表单区域内添加除分割线外的非表单组件！')
+					this.deletePageItem(newIndex)
+					return
                 }
                 //判断当前是否为重复添加格栅布局的行为
 				if (this.isFlex && currentAddItem && currentAddItem.type === 'flexbox') {

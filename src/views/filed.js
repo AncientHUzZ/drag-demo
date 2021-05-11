@@ -42,13 +42,40 @@ export default [
 				type: 'table',
 				title: '表格',
 				thead: true, //是否显示表头
-				theadData: ['示例1','示例2'], //表头数据源
-				tdData: [ //表格内容 默认2*2
+				theadData: [
 					{
-						source: ['示例1-1', '示例1-2'],
+						id: 0,
+						label: '示例1'
 					},
 					{
-						source: ['示例2-1', '示例2-2']
+						id: 1,
+						label: '示例2'
+					}
+				], //表头数据源
+				tdData: [ //表格内容 默认2*2
+					{
+						source: [
+							{
+								id: 0,
+								label: '示例1-1'
+							},
+							{
+								id: 1,
+								label: '示例1-2'
+							}
+						],
+					},
+					{
+						source: [
+							{
+								id: 0,
+								label: '示例2-1'
+							},
+							{
+								id: 1,
+								label: '示例2-2'
+							}
+						]
 					}
 				]
 			},
