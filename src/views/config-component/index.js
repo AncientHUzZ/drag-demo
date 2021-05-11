@@ -13,6 +13,9 @@ import YmfSwitchConfig from './ymf-switch-config'
 import YmfPickerConfig from './ymf-picker-config'
 import YmfRadioConfig from './ymf-radio-config'
 import YmfCheckboxConfig from './ymf-checkbox-config'
+import YmfLineConfig from './ymf-line-config'
+import YmfPieConfig from './ymf-pie-config'
+import YmfHistogramConfig from './ymf-histogram-config'
 
 const components = [
 	YmfSwipeConfig,
@@ -29,7 +32,10 @@ const components = [
 	YmfSwitchConfig,
 	YmfPickerConfig,
 	YmfRadioConfig,
-	YmfCheckboxConfig
+	YmfCheckboxConfig,
+	YmfLineConfig,
+	YmfPieConfig,
+	YmfHistogramConfig,
 ]
 
 export default {

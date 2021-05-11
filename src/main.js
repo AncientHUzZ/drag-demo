@@ -7,8 +7,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import PageDesign from './views'
+import oView from 'oview'
 
 Vue.use(PageDesign)
+Vue.use(oView)
 
 Vue.config.productionTip = false
 

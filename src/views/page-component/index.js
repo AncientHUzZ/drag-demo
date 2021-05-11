@@ -13,6 +13,9 @@ import YmfSwitch from './ymf-switch'
 import YmfPicker from './ymf-picker'
 import YmfRadio from './ymf-radio'
 import YmfCheckBox from './ymf-checkbox'
+import YmfHistogram from './ymf-histogram'
+import YmfPie from './ymf-pie'
+import YmfLine from './ymf-line'
 
 const components = [
 	YmfSwipe,
@@ -30,6 +33,9 @@ const components = [
 	YmfPicker,
 	YmfRadio,
 	YmfCheckBox,
+	YmfHistogram,
+	YmfPie,
+	YmfLine
 ]
 
 

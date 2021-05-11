@@ -258,5 +258,95 @@ export default [
 				direction: 'horizontal' //摆放方向 vertical
 			}
 		]
+	},
+	{
+		title: '图表组件',
+		list: [
+			{
+				uuid: '',
+				type: 'histogram',
+				title: '柱状图',
+				tooltip: {},
+				legend: {
+					disable: false,
+					position: "top",
+					align: "center"
+				},
+				data: [
+					{
+						label: "示例一",
+						value: 38
+					},
+					{
+						label: "示例二",
+						value: 52
+					},
+					{
+						label: "示例三",
+						value: 61
+					},
+				]
+			},
+			{
+				uuid: '',
+				type: 'pie',
+				title: '饼状图',
+				legend: {
+					disable: false,
+					position: "top",
+					align: "center"
+				},
+				data: [
+					{
+						label: "示例一",
+						value: 30
+					},
+					{
+						label: "示例二",
+						value: 55
+					},
+					{
+						label: "示例三",
+						value: 15
+					}
+				]
+			},
+			{
+				uuid: '',
+				type: 'line',
+				title: '折线图',
+				lineType: 'line', //显示类型 line point
+				shape: 'line',//线段形状 line dash虚线 smooth平滑线
+				legend: {
+					disable: false,
+					position: "top",
+					align: "center"
+				},
+				data: [
+					{
+						label: '示例一',
+						value: 300
+					}, {
+						label: '示例二',
+						value: 400
+					}, {
+						label: '示例三',
+						value: 350
+					}, {
+						label: '示例四',
+						value: 500
+					}, {
+						label: '示例五',
+						value: 490
+					}, {
+						label: '示例六',
+						value: 600
+					}, {
+						label: '示例七',
+						value: 900
+					}
+				]
+			}
+		]
 	}
 ]
