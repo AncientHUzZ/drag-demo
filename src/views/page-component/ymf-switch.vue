@@ -1,6 +1,7 @@
 <template>
     <div>
-        <van-field name="switch" :label="source.title">
+        <div style="width: 100%;height: 50px;position: absolute;z-index: 99999;cursor: move"></div>
+        <van-field name="switch" :label="source.title" readonly>
             <template #input>
                 <van-switch v-model="source.value"
                             :size="source.size"
@@ -21,7 +22,7 @@
 				type: Object,
 				required: true
 			}
-		}
+		},
 	}
 </script>
 

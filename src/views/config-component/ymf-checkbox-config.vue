@@ -35,6 +35,9 @@
                 <el-form-item label="value">
                     <el-input type="text" v-model="item.value"></el-input>
                 </el-form-item>
+                <el-form-item label="设为默认">
+                    <el-switch v-model="item.isDefault" active-text="是" inactive-text="否" @change="setDefaultValue($event, index)"></el-switch>
+                </el-form-item>
                 <el-form-item label="删除该行">
                     <el-button type="primary" size="small" icon="el-icon-minus" @click="deleteOption(index)"></el-button>
                 </el-form-item>
@@ -61,7 +64,20 @@
 				this.source.options.push(option)
 			},
 			deleteOption(index) {
+				this.source.value.splice(index,1)
 				this.source.options.splice(index,1)
+			},
+			setDefaultValue(newVal, index) {
+				this.source.options.forEach((item, optionIndex) => {
+					if (index === optionIndex) {
+						item.isDefault = newVal
+						if (newVal) {
+							this.source.value.push(item.value)
+						} else {
+							this.source.value.splice(optionIndex, 1)
+						}
+					}
+				})
 			}
 		}
 	}

@@ -193,11 +193,20 @@ export default [
 				uuid: '',
 				type: 'switch',
 				title: '开关',
-				value: false, //绑定值 只支持true和false
+				value: 0, //绑定值
 				disabled: false, //是否为禁用状态
 				size: '20', // 开关尺寸，默认单位为px
-				activeValue: '', //打开时对应的值
-				inactiveValue: '' //关闭时对应的值
+				activeValue: 1, //打开时对应的值
+				inactiveValue: 0, //关闭时对应的值
+				isLinkage: false, //是否联动其他组件
+				linkageComponent: { //联动组件内容
+					active: {  //打开时对应值联动组件配置
+
+					},
+					inactive: { //关闭时对应的值联动组件配置
+
+					}
+				}
 			},
 			{
 				uuid: '',
@@ -210,11 +219,13 @@ export default [
 				options: [            //下拉选择数据源
 					{
 						label: '选项一',
-						value: 1
+						value: 1,
+						isDefault: false
 					},
 					{
 						label: '选项二',
-						value: 2
+						value: 2,
+						isDefault: false
 					}
 				]
 			},
@@ -226,11 +237,13 @@ export default [
 				options: [ // 选项列表
 					{
 						label: '示例选项1',
-						value: '1'
+						value: '1',
+						isDefault: false
 					},
 					{
 						label: '示例选项2',
-						value: '2'
+						value: '2',
+						isDefault: false
 					},
 				],
 				disabled: false, //是否禁用
@@ -248,11 +261,13 @@ export default [
 				options: [
 					{
 						label: '示例选项1',
-						value: '1'
+						value: '1',
+						isDefault: false
 					},
 					{
 						label: '示例选项2',
-						value: '2'
+						value: '2',
+						isDefault: false
 					}
 				],
 				direction: 'horizontal' //摆放方向 vertical

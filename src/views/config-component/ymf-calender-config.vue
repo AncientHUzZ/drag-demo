@@ -24,7 +24,7 @@
                     <el-date-picker v-model="source.maxDate" type="date" placeholder="请选择最大日期"></el-date-picker>
                 </el-form-item>
                 <el-form-item label="默认日期">
-                    <el-date-picker v-model="source.defaultDate" type="date" placeholder="请选择默认日期"></el-date-picker>
+                    <el-date-picker v-model="source.defaultDate" type="date" placeholder="请选择默认日期" @change="changeDate"></el-date-picker>
                 </el-form-item>
             </el-form>
         </div>
@@ -40,6 +40,11 @@
 				required: true
 			}
 		},
+        methods: {
+			changeDate(date) {
+				this.source.value = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+            }
+        }
 	}
 </script>
 

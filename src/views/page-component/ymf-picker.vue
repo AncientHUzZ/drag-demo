@@ -1,13 +1,13 @@
 <template>
     <div>
+        <div style="width: 100%;height: 50px;position: absolute;z-index: 99999;cursor: move"></div>
         <van-field
                 readonly
-                clickable
+
                 name="picker"
                 :value="source.value"
                 :label="source.title"
                 :placeholder="source.placeholder"
-                @click="showPicker = true"
         />
         <van-popup v-model="showPicker" position="bottom">
             <van-picker

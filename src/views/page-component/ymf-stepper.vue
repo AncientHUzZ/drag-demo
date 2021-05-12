@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div style="width: 100%;height: 50px;position: absolute;z-index: 99999;cursor: move"></div>
         <van-field name="stepper" :label="source.title">
             <template #input>
                 <van-stepper v-model="source.value"

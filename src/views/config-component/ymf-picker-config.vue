@@ -30,6 +30,9 @@
                 <el-form-item label="value">
                     <el-input type="text" v-model="item.value"></el-input>
                 </el-form-item>
+                <el-form-item label="设为默认">
+                    <el-switch v-model="item.isDefault" active-text="是" inactive-text="否" @change="setDefaultValue($event, index)"></el-switch>
+                </el-form-item>
                 <el-form-item label="删除该行">
                     <el-button type="primary" size="small" icon="el-icon-minus" @click="deleteOption(index)"></el-button>
                 </el-form-item>
@@ -51,13 +54,30 @@
 			addOption() {
 				let option = {
                     label: '',
-					value: ''
+					value: '',
+					isDefault: false
 				}
 				this.source.options.push(option)
 			},
 			deleteOption(index) {
+				if (this.source.value === this.source.options[index].label) {
+					this.source.value = ''
+                }
 				this.source.options.splice(index,1)
-			}
+			},
+            setDefaultValue(newVal, index) {
+                this.source.options.forEach((item, optionIndex) => {
+                	item.isDefault = false
+                    if (index === optionIndex) {
+						item.isDefault = newVal
+                        if (newVal) {
+                        	this.source.value = item.label
+                        } else {
+							this.source.value = ''
+                        }
+                    }
+                })
+            }
         }
 	}
 </script>
