@@ -1,6 +1,6 @@
 <template>
     <div>
-        <o-chart :data="source.data" :tooltip="source.tooltip" :legend="source.legend">
+        <o-chart :data="source.data" :tooltip="source.tooltip" :legend="source.legend" :key="refreshKey">
             <o-histogram position="label*value"></o-histogram>
         </o-chart>
     </div>
@@ -14,7 +14,22 @@
 				type: Object,
 				required: true
 			}
-		}
+		},
+		watch:{
+			source:{
+				deep: true,
+				handler: function (newValue) {
+					if (newValue) {
+						this.refreshKey = new Date().getTime()
+					}
+				}
+			}
+		},
+		data() {
+			return {
+				refreshKey: new Date().getTime()
+			}
+		},
 	}
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <o-chart :data="source.data" :legend="source.legend" ref="pie">
+        <o-chart :data="source.data" :legend="source.legend" :key="refreshKey">
             <o-pie :pie-label="pieLabel()" position="label*value"></o-pie>
         </o-chart>
     </div>
@@ -21,16 +21,15 @@
 				handler: function (newValue) {
 					if (newValue) {
 						this.countAll(newValue.data)
-                        console.log(this.percent)
-						// this.$refs.pie.repaint()
-						// this.$forceUpdate()
+                        this.refreshKey = new Date().getTime()
 					}
 				}
 			}
 		},
         data() {
 			return {
-				percent: 0
+				percent: 0,
+                refreshKey: new Date().getTime()
             }
         },
         created(){

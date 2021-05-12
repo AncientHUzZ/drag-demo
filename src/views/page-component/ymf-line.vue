@@ -1,6 +1,6 @@
 <template>
     <div>
-        <o-chart :data="source.data" :legend="source.legend" :tooltip="tooltip" ref="line">
+        <o-chart :data="source.data" :legend="source.legend" :tooltip="tooltip" :key="refreshKey">
             <o-line :type="source.lineType" :shape="source.shape"  :position="'label*value'"></o-line>
         </o-chart>
     </div>
@@ -19,10 +19,8 @@
 		    source:{
 		    	deep: true,
                 handler: function (newValue) {
-		    		console.log(newValue)
                     if (newValue) {
-                    	this.$refs.line.repaint()
-                        this.$forceUpdate()
+						this.refreshKey = new Date().getTime()
                     }
 				}
             }
@@ -38,7 +36,8 @@
 					crosshairsStyle: {
 						lineDash: [2]
 					}
-                }
+                },
+				refreshKey: new Date().getTime()
             }
         }
 	}
