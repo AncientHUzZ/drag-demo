@@ -2,7 +2,7 @@
     <div class="config">
         <el-tabs v-model="defaultTab">
             <el-tab-pane label="组件设置" name="first">
-                <config-item :source="currentPageItem"></config-item>
+                <config-item :source="currentPageItem" :page="pageSource"></config-item>
             </el-tab-pane>
         </el-tabs>
     </div>
@@ -20,6 +20,10 @@
 				type: Object,
 				required: true,
                 default:{}
+			},
+			pageSource: {
+				type: Object,
+				required: true
 			}
 		},
         watch:{

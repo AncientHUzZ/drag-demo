@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div style="width: 100%;height: 50px;position: absolute;z-index: 99999;cursor: move"></div>
+        <div style="width: 100%;height: 50px;position: absolute;z-index: 1000;cursor: move"></div>
         <van-field name="checkboxGroup" :label="source.title">
             <template #input>
                 <van-checkbox-group v-model="source.value"

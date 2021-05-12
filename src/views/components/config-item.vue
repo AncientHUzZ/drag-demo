@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="getComponent()" :source="source"></component>
+        <component :is="getComponent()" :source="source" :page="page"></component>
     </div>
 </template>
 
@@ -9,6 +9,10 @@
 		name: "config-item",
 		props: {
 			source: {
+				type: Object,
+				required: true
+			},
+			page: {
 				type: Object,
 				required: true
 			}

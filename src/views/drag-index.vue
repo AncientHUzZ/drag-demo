@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="component-config">
-                    <component-config :current-page-item="selectedPageItem"></component-config>
+                    <component-config :current-page-item="selectedPageItem" :page-source="sourceData"></component-config>
                 </div>
             </div>
         </el-main>

@@ -27,24 +27,51 @@
                 <el-form-item label="禁用状态">
                     <el-switch v-model="source.disabled" active-text="是" inactive-text="否"></el-switch>
                 </el-form-item>
-
-                <el-form-item label="是否联动">
-                    <el-switch v-model="source.isLinkage" active-text="是" inactive-text="否"></el-switch>
+                <el-form-item label="添加联动">
+                    <el-button type="primary" icon="el-icon-plus" size="small" @click="linkageFlag = true"></el-button>
                 </el-form-item>
             </el-form>
         </div>
+        <el-dialog title="添加联动" :visible.sync="linkageFlag" fullscreen>
+            <div style="width: 95%;margin: 0 auto;">
+                <el-row>
+                    <el-col :span="8">
+                        <h3>请选择要联动的组件</h3>
+                        <linkage-page :page-source="page"></linkage-page>
+                    </el-col>
+                    <el-col :span="8">
+                    </el-col>
+                    <el-col :span="8">
+                    </el-col>
+                </el-row>
+
+            </div>
+        </el-dialog>
     </div>
 </template>
 
 <script>
+    import LinkagePage from '../components/linkage-page'
 	export default {
 		name: "ymf-switch-config",
+        components: {
+			LinkagePage
+        },
 		props:{
 			source: {
 				type: Object,
 				required: true
-			}
+			},
+            page: {
+				type: Object,
+				required: false
+            }
 		},
+        data() {
+		    return {
+				linkageFlag: false
+            }
+        },
         watch: {
 			source: {
 				deep: true,
