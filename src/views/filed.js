@@ -199,14 +199,20 @@ export default [
 				activeValue: 1, //打开时对应的值
 				inactiveValue: 0, //关闭时对应的值
 				isLinkage: false, //是否联动其他组件
-				linkageComponent: { //联动组件内容
-					active: {  //打开时对应值联动组件配置
-
+				options: [  //配合联动内容，与组件自身无关
+					{
+						label: '关闭',
+						value: 0,
+						isDefault: false,
+						linkage:[]
 					},
-					inactive: { //关闭时对应的值联动组件配置
-
+					{
+						label: '打开',
+						value: 1,
+						isDefault: false,
+						linkage:[]
 					}
-				}
+				],
 			},
 			{
 				uuid: '',

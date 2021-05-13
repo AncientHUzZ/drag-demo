@@ -59,7 +59,8 @@
 			addOption() {
 				let option = {
 					label: '示例选项' + (this.source.options.length + 1),
-					value: this.source.options.length + 1
+					value: this.source.options.length + 1,
+                    isDefault: false
 				}
 				this.source.options.push(option)
 			},
