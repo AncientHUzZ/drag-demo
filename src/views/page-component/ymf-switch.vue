@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="position: relative">
         <div style="width: 100%;height: 50px;position: absolute;z-index: 1000;cursor: move"></div>
         <van-field name="switch" :label="source.title" readonly>
             <template #input>

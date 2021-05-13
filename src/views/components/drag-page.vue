@@ -120,6 +120,7 @@
         z-index: 99999;
     }
     .page-item{
+        width: 100%;
         background: #fff;
         transition: 0.3s;
     }

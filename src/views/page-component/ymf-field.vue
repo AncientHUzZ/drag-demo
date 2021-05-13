@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div style="width: 100%;height: 50px;position: absolute;z-index: 1000;cursor: move"></div>
+    <div style="position: relative">
+        <div class="modal-custom"></div>
         <van-field v-model="source.value"
                    :label="source.title"
                    :type="source.fieldType"
@@ -29,5 +29,12 @@
 <style lang="less" scoped>
     /deep/.van-field {
         cursor: move;
+    }
+    .modal-custom {
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        z-index: 1000;
+        cursor: move
     }
 </style>
