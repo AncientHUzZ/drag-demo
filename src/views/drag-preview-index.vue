@@ -123,6 +123,52 @@
                                         fit="fill"/>
                             </van-swipe-item>
                         </van-swipe>
+                        <!-- 图片 -->
+                        <van-image v-if="page.type === 'image'"  :key="index"
+                                :width="page.width"
+                                :height="page.height"
+                                fit="fill"
+                                :src="page.url"
+                                :round="page.round"
+                        />
+                        <!-- 表格 -->
+                        <table  v-if="page.type === 'table'" :key="index"
+                                style="width: 100%" class="gridtable">
+                            <tr>
+                                <th v-for="(item, tIndex) in page.theadData" :key="tIndex">
+                                    {{ item.label }}
+                                </th>
+                            <tr/>
+                            <tr v-for="(item, index) in page.tdData" :key="index">
+                                <td v-for="(td, tIndex) in item.source" :key="tIndex" style="text-align: center">
+                                    {{td.label}}
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- 文本展示组 -->
+                        <van-cell-group v-if="page.type === 'cell-group'" :key="index"
+                                :title="page.title"
+                                :border="page.border">
+                            <van-cell  v-for="(item, cgIndex) in page.itemDataSourceList" :key="cgIndex"
+                                       :title="item.title"
+                                       :value="item.value"
+                                       :label="item.subTitle"
+                            />
+                        </van-cell-group>
+                        <!-- 文本 -->
+                        <van-cell v-if="page.type === 'cell'" :key="index"
+                                  :title="page.title"
+                                  :value="page.value"
+                                  :label="page.subTitle" />
+                        <!-- 柱状图 -->
+                        <histogram-chart v-if="page.type === 'histogram'" :key="refreshKey + 'histogram' + Math.floor(Math.random()*10000)"
+                                         :source="page"></histogram-chart>
+                        <!-- 饼状图 -->
+                        <pie-chart v-if="page.type === 'pie'" :key="refreshKey + 'pie' + Math.floor(Math.random()*10000)"
+                                   :source="page"></pie-chart>
+                        <!-- 折线图 -->
+                        <line-chart v-if="page.type === 'line'" :key="refreshKey+ 'line' + Math.floor(Math.random()*10000)"
+                                    :source="page"></line-chart>
                     </template>
                 </div>
             </div>
@@ -134,12 +180,20 @@
 </template>
 
 <script>
+    import PieChart from './page-component/ymf-pie'
+    import HistogramChart from './page-component/ymf-histogram'
+    import LineChart from './page-component/ymf-line'
 	export default {
 		name: "drag-preview-index",
+        components: {
+			PieChart,
+			HistogramChart,
+			LineChart
+        },
 		data() {
 			return {
 				phone: require('../assets/phoneTopNav.png'),
-                source: null
+                source: null,
 			}
 		},
 		props: {
@@ -151,7 +205,12 @@
 				type: Boolean,
 				required: true,
 				default: false
-			}
+			},
+			refreshKey: {
+				type: Number,
+				required: true,
+                default: new Date().getTime()
+            }
 		},
         created() {
 			this.source = JSON.parse(JSON.stringify(this.pageSource))
@@ -195,6 +254,7 @@
 </script>
 
 <style lang="less" scoped>
+    @import "../../src/views/common/index.css";
     .top-nav {
         position: absolute;
         top: 0;

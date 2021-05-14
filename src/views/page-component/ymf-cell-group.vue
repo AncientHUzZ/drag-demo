@@ -22,6 +22,8 @@
 	}
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+    /deep/.van-cell-group__title {
+        background-color: #F5F5F5;
+    }
 </style>

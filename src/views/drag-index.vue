@@ -30,7 +30,8 @@
                 </div>
             </div>
         </el-main>
-        <drag-preview :page-source="sourceData" :preview-flag="previewFlag" @close="closePreview"></drag-preview>
+        <drag-preview :page-source="sourceData" :preview-flag="previewFlag" :refresh-key="refreshKey"
+                      @close="closePreview"></drag-preview>
     </el-container>
 </template>
 
@@ -61,11 +62,13 @@
                     type: 'page',
                 	pages: []
                 },
-                previewFlag: false
+                previewFlag: false,
+				refreshKey: new Date().getTime()
             }
         },
         methods: {
 			showPreview() {
+				this.refreshKey = new Date().getTime()
 				this.previewFlag = true
             },
 			closePreview() {

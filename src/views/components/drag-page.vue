@@ -106,7 +106,7 @@
         height: 100%;
     }
     .flex-drag-area {
-        width: 100%;
+        width: 99%;
         min-height: 100px;
     }
     .el-icon-error {
