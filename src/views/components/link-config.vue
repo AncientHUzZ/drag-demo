@@ -124,6 +124,13 @@
 				this.linkage.optionIndex = index
 			},
 			addLinkOption() { //添加值
+				let type = this.linkComponent.type
+                if (type === 'switch') {
+                	if (this.linkage.options.length === 2) {
+                		this.$message.warning('开关组件只能添加两个选项！')
+                		return
+                    }
+                }
 				let option = {
 					label: '示例选项',
 					value: '示例值',

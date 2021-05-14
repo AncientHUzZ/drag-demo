@@ -16,6 +16,15 @@
                 <el-form-item label="确认文字">
                     <el-input v-model="source.confirmText" placeholder="请输入确认文字"></el-input>
                 </el-form-item>
+                <el-form-item label="添加联动">
+                    <el-button type="primary" icon="el-icon-plus" size="small" @click="showLinkage"></el-button>
+                </el-form-item>
+                <div v-for="(item, index) in source.options" :key="index">
+                    <h4>联动选项：{{ item.label }}</h4>
+                    <p v-for="(link, lIndex) in item.linkage" :key="lIndex" style="margin-left: 20px">
+                        <span>联动组件ID：{{ link.uuid }}</span>
+                    </p>
+                </div>
                 <el-form-item label="添加选项">
                     <el-button type="primary" size="small" icon="el-icon-plus" @click="addOption"></el-button>
                 </el-form-item>
@@ -38,26 +47,61 @@
                 </el-form-item>
             </el-form>
         </div>
+        <link-config :page="page" :source="source" :linkage-flag="linkageFlag"
+                     @close="close" @confirm="confirm"></link-config>
     </div>
 </template>
 
 <script>
+	import LinkConfig from '../components/link-config'
 	export default {
 		name: "ymf-picker-config",
+		components: {
+			LinkConfig
+		},
 		props:{
 			source: {
 				type: Object,
 				required: true
+			},
+			page: {
+				type: Object,
+				required: false
+			}
+		},
+		data() {
+			return {
+				linkageFlag: false
 			}
 		},
         methods: {
+			showLinkage() {
+				this.$store.dispatch('changeSelectedItemToLink', this.source)
+				this.linkageFlag = true
+			},
+			close() {
+				this.linkageFlag = false
+			},
+			confirm(linkage) {
+				this.source.options.forEach((item, index) => {
+					if (index === linkage.optionIndex) {
+						let temp = {
+							uuid: linkage.uuid,
+							options: linkage.options
+						}
+						item.linkage.push(temp)
+					}
+				})
+			},
 			addOption() {
 				let option = {
                     label: '',
 					value: '',
-					isDefault: false
+					isDefault: false,
+					linkage:[]
 				}
 				this.source.options.push(option)
+                this.$forceUpdate()
 			},
 			deleteOption(index) {
 				if (this.source.value === this.source.options[index].label) {

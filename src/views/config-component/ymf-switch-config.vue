@@ -32,8 +32,8 @@
                 </el-form-item>
             </el-form>
             <div v-for="(item, index) in source.options" :key="index">
-                <h4>{{ item.label }}</h4>
-                <p v-for="(link, lIndex) in item.linkage" :key="lIndex">
+                <h4>联动选项：{{ item.label }}</h4>
+                <p v-for="(link, lIndex) in item.linkage" :key="lIndex" style="margin-left: 20px">
                     <span>联动组件ID：{{ link.uuid }}</span>
                 </p>
             </div>

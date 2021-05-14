@@ -226,12 +226,14 @@ export default [
 					{
 						label: '选项一',
 						value: 1,
-						isDefault: false
+						isDefault: false,
+						linkage:[]
 					},
 					{
 						label: '选项二',
 						value: 2,
-						isDefault: false
+						isDefault: false,
+						linkage:[]
 					}
 				]
 			},
@@ -244,12 +246,14 @@ export default [
 					{
 						label: '示例选项1',
 						value: '1',
-						isDefault: false
+						isDefault: false,
+						linkage:[]
 					},
 					{
 						label: '示例选项2',
 						value: '2',
-						isDefault: false
+						isDefault: false,
+						linkage:[]
 					},
 				],
 				disabled: false, //是否禁用
@@ -268,12 +272,14 @@ export default [
 					{
 						label: '示例选项1',
 						value: '1',
-						isDefault: false
+						isDefault: false,
+						linkage:[]
 					},
 					{
 						label: '示例选项2',
 						value: '2',
-						isDefault: false
+						isDefault: false,
+						linkage:[]
 					}
 				],
 				direction: 'horizontal' //摆放方向 vertical
