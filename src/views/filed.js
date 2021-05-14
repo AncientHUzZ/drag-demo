@@ -1,8 +1,6 @@
 /**
  * 可拖拽组件数据列表
  */
-import fa from "element-ui/src/locale/lang/fa";
-
 export default [
 	{
 		title: '数据展示组件',
@@ -157,7 +155,6 @@ export default [
 				fieldType: 'text', // 输入框类型, 可选值为 number textarea password
 				placeholder: '请输入文本', // 输入框占位提示文字
 				clearable: false, // 是否显示清除图标
-				maxlength: 200, // 最大输入字符
 				disabled: false, //是否禁用输入框
 				readonly: false, //是否只读
 				showWordLimit: false //是否显示字数统计
@@ -187,7 +184,8 @@ export default [
 				minDate: new Date('1970-01-01'),// 最小日期
 				maxDate: new Date('2050-01-01'),// 最大日期
 				defaultDate: new Date(), //默认选中日期
-				placeholder: '点击选择日期'
+				placeholder: '点击选择日期',
+				showCalendar: false
 			},
 			{
 				uuid: '',
@@ -222,6 +220,7 @@ export default [
 				cancelText: '取消', //弹窗的取消文字
 				confirmText: '确认', //弹窗的确认文字
 				placeholder: '请选择....', // 占位符
+				showPicker: false,
 				options: [            //下拉选择数据源
 					{
 						label: '选项一',

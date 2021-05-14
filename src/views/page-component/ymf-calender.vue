@@ -3,7 +3,7 @@
         <div style="width: 100%;height: 50px;position: absolute;z-index: 1000;cursor: move"></div>
         <van-field
                 readonly
-
+                clickable
                 name="calendar"
                 :value="source.value"
                 :label="source.title"

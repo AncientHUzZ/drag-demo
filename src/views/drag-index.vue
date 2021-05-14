@@ -1,7 +1,9 @@
 <template>
     <el-container>
         <el-header>
-            <div class="drag-header"></div>
+            <div class="drag-header">
+                <el-button type="text" icon="el-icon-view" style="margin-left: 70%" @click="showPreview">预览</el-button>
+            </div>
         </el-header>
         <el-main>
             <div class="edit-area">
@@ -21,15 +23,14 @@
                     </div>
                 </div>
                 <div class="html-edit-area">
-                    <div style="">
-                        <drag-content-page :pageSource="sourceData"></drag-content-page>
-                    </div>
+                    <drag-content-page :pageSource="sourceData"></drag-content-page>
                 </div>
                 <div class="component-config">
                     <component-config :current-page-item="selectedPageItem" :page-source="sourceData"></component-config>
                 </div>
             </div>
         </el-main>
+        <drag-preview :page-source="sourceData" :preview-flag="previewFlag" @close="closePreview"></drag-preview>
     </el-container>
 </template>
 
@@ -38,12 +39,14 @@
 	import Draggable from 'vuedraggable'
     import DragContentPage from './components/drag-content-page'
     import ComponentConfig from './components/component-config'
+    import DragPreview from './drag-preview-index'
 	export default {
 		name: "drag-index",
 		components: {
 			Draggable,
 			DragContentPage,
-			ComponentConfig
+			ComponentConfig,
+			DragPreview
 		},
         computed:{
 			selectedPageItem() {
@@ -57,7 +60,16 @@
 					uuid: Date.now() + '_' + Math.ceil(Math.random() * 99999),
                     type: 'page',
                 	pages: []
-                }
+                },
+                previewFlag: false
+            }
+        },
+        methods: {
+			showPreview() {
+				this.previewFlag = true
+            },
+			closePreview() {
+				this.previewFlag = false
             }
         }
 	}
@@ -74,7 +86,6 @@
         width: 100%;
         height: 60px;
         display: flex;
-        justify-content: space-between;
         flex-direction: row;
         align-items: center;
         background: #FFFFFF;
@@ -111,6 +122,8 @@
             width: auto;
             max-width: 400px;
             position: relative;
+            display: flex;
+            flex-direction: row;
         }
 
     }

@@ -4,7 +4,7 @@
                 :dashed="source.dashed" :content-position="source.contentPosition">
             {{ source.content }}
         </van-divider>
-        <div style="width: 100%;height: 12px;background: #FFFFFF;padding-top: 12px" v-else>
+        <div style="width: 100%;height: 12px;background: #F5F5F5;padding-top: 8px" v-else>
             <van-divider :dashed="source.dashed" :style="{borderColor: '#cccccc'}"/>
         </div>
     </div>
@@ -25,5 +25,6 @@
 <style lang="less" scoped>
     /deep/ .van-divider {
         margin: 0;
+        background-color: #F5F5F5;
     }
 </style>

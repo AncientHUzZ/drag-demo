@@ -5,6 +5,7 @@
                    :loop="source.loop"
                    :show-indicators="source.showIndicators"
                    :height="source.height"
+                   :style="{height: source.height+'px'}"
         >
             <van-swipe-item v-for="(item, index) in source.list" :key="index">
                 <van-image

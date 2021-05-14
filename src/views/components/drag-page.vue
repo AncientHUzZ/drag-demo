@@ -102,7 +102,7 @@
 
 <style lang="less" scoped>
     .drag-area {
-        width: 100%;
+        width: 99%;
         height: 100%;
     }
     .flex-drag-area {

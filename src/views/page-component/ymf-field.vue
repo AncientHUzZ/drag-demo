@@ -6,7 +6,7 @@
                    :type="source.fieldType"
                    :placeholder="source.placeholder"
                    :clearable="source.clearable"
-                   :maxlength="source.maxLength"
+                   maxlength="200"
                    :disabled="source.disabled"
                    readonly
                    :show-word-limit="source.showWordLimit"

@@ -1,5 +1,5 @@
 <template>
-    <el-dialog title="添加联动" :visible.sync="linkageFlag" fullscreen @close="clear">
+    <el-dialog title="添加联动" :visible.sync="linkageFlag" fullscreen :before-close="clear">
         <div style="width: 95%;margin: 0 auto;">
             <el-row>
                 <el-col :span="8">
