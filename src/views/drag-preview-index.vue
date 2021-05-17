@@ -7,12 +7,12 @@
                 </div>
                 <div class="view-content">
                     <template v-for="(page, index) in source.pages">
-                        <van-row v-if="page.type === 'flexbox'" :key="index"
+                        <van-row v-if="page.type === 'flexbox'" :key="index + 'row'"
                                  :gutter="page.gutter" :justify="page.justify" style="min-height: 100px">
                             <van-col :span="24 / page.itemDataSourceList.length" v-for="(item,fIndex) in page.itemDataSourceList"
-                                     :key="fIndex" style="min-height: 100px">
-                                <div class="flex-basic" v-for="(flexItem, fmIndex) in item.pages" :key="fmIndex">
-                                    <preview-item  :page="flexItem" :refresh-key="refreshKey"></preview-item>
+                                     :key="fIndex + 'col'" style="min-height: 100px">
+                                <div class="flex-basic" v-for="(flexItem, fmIndex) in item.pages" :key="fmIndex + 'flex'">
+                                    <preview-item :source="item" :page="flexItem" :refresh-key="refreshKey"></preview-item>
                                 </div>
                             </van-col>
                         </van-row>
@@ -23,10 +23,10 @@
                                 :colon="page.colon"
                         >
                             <template v-for="(formItem, formIndex) in page.itemDataSource.pages">
-                                <preview-item  :page="formItem" :refresh-key="refreshKey" :key="formIndex"></preview-item>
+                                <preview-item :source="page.itemDataSource"  :page="formItem" :refresh-key="refreshKey" :key="formIndex"></preview-item>
                             </template>
                         </van-form>
-                        <preview-item v-else :page="page" :refresh-key="refreshKey" :key="index"></preview-item>
+                        <preview-item v-else :source="source" :page="page" :refresh-key="refreshKey" :key="index"></preview-item>
                     </template>
                 </div>
             </div>
@@ -113,6 +113,5 @@
     }
     .flex-basic {
         width: 100%;
-        min-height: 100px;
     }
 </style>

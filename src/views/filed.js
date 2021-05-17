@@ -175,18 +175,18 @@ export default [
 				disabledMinus: false, //是否禁用减少按钮
 				disabledInput: false, //是否禁用输入框
 			},
-			{
-				uuid: '',
-				type: 'calender',
-				title: '日历',
-				calenderType: 'single', //选择类型  single表示选择单个日期， multiple表示选择多个日期， range表示选择日期区间
-				value: '', // 绑定值
-				minDate: new Date('1970-01-01'),// 最小日期
-				maxDate: new Date('2050-01-01'),// 最大日期
-				defaultDate: new Date(), //默认选中日期
-				placeholder: '点击选择日期',
-				showCalendar: false
-			},
+			// {
+			// 	uuid: '',
+			// 	type: 'calender',
+			// 	title: '日历',
+			// 	calenderType: 'single', //选择类型  single表示选择单个日期， multiple表示选择多个日期， range表示选择日期区间
+			// 	value: '', // 绑定值
+			// 	minDate: new Date('1970-01-01'),// 最小日期
+			// 	maxDate: new Date('2050-01-01'),// 最大日期
+			// 	defaultDate: new Date(), //默认选中日期
+			// 	placeholder: '点击选择日期',
+			// 	showCalendar: false
+			// },
 			{
 				uuid: '',
 				type: 'switch',
@@ -221,6 +221,7 @@ export default [
 				confirmText: '确认', //弹窗的确认文字
 				placeholder: '请选择....', // 占位符
 				showPicker: false,
+				isLinkage: false, //是否联动其他组件
 				options: [            //下拉选择数据源
 					{
 						label: '选项一',
@@ -258,6 +259,7 @@ export default [
 				disabled: false, //是否禁用
 				direction: 'horizontal', //摆放方向 vertical
 				iconSize: '20', //所有复选框的图标大小，默认单位为 px
+				isLinkage: false, //是否联动其他组件
 			},
 			{
 				uuid: '',
@@ -281,7 +283,8 @@ export default [
 						linkage:[]
 					}
 				],
-				direction: 'horizontal' //摆放方向 vertical
+				direction: 'horizontal', //摆放方向 vertical
+				isLinkage: false, //是否联动其他组件
 			}
 		]
 	},

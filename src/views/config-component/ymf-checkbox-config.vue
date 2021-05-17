@@ -21,15 +21,15 @@
                         <template #append>像素(px)</template>
                     </el-input>
                 </el-form-item>
-                <el-form-item label="添加联动">
-                    <el-button type="primary" icon="el-icon-plus" size="small" @click="showLinkage"></el-button>
-                </el-form-item>
-                <div v-for="(item, index) in source.options" :key="index">
-                    <h4>联动选项：{{ item.label }}</h4>
-                    <p v-for="(link, lIndex) in item.linkage" :key="lIndex" style="margin-left: 20px">
-                        <span>联动组件ID：{{ link.uuid }}</span>
-                    </p>
-                </div>
+<!--                <el-form-item label="添加联动">-->
+<!--                    <el-button type="primary" icon="el-icon-plus" size="small" @click="showLinkage"></el-button>-->
+<!--                </el-form-item>-->
+<!--                <div v-for="(item, index) in source.options" :key="index">-->
+<!--                    <h4>联动选项：{{ item.label }}</h4>-->
+<!--                    <p v-for="(link, lIndex) in item.linkage" :key="lIndex" style="margin-left: 20px">-->
+<!--                        <span>联动组件ID：{{ link.uuid }}</span>-->
+<!--                    </p>-->
+<!--                </div>-->
                 <el-form-item label="添加选项">
                     <el-button type="primary" size="small" icon="el-icon-plus" @click="addOption"></el-button>
                 </el-form-item>
@@ -88,6 +88,7 @@
 				this.linkageFlag = false
 			},
 			confirm(linkage) {
+				this.source.isLinkage = false
 				this.source.options.forEach((item, index) => {
 					if (index === linkage.optionIndex) {
 						let temp = {
@@ -95,6 +96,9 @@
 							options: linkage.options
 						}
 						item.linkage.push(temp)
+					}
+					if (item.linkage.length > 0) {
+						this.source.isLinkage = true
 					}
 				})
 			},

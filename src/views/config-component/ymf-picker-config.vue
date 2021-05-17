@@ -23,6 +23,8 @@
                     <h4>联动选项：{{ item.label }}</h4>
                     <p v-for="(link, lIndex) in item.linkage" :key="lIndex" style="margin-left: 20px">
                         <span>联动组件ID：{{ link.uuid }}</span>
+                        <i class="el-icon-delete" style="color: #6CF;margin-left: 10px;font-size: 20px;cursor: pointer"
+                           @click="deleteLinkage(lIndex,item)"></i>
                     </p>
                 </div>
                 <el-form-item label="添加选项">
@@ -83,6 +85,7 @@
 				this.linkageFlag = false
 			},
 			confirm(linkage) {
+				this.source.isLinkage = false
 				this.source.options.forEach((item, index) => {
 					if (index === linkage.optionIndex) {
 						let temp = {
@@ -90,6 +93,9 @@
 							options: linkage.options
 						}
 						item.linkage.push(temp)
+					}
+					if (item.linkage.length > 0) {
+						this.source.isLinkage = true
 					}
 				})
 			},
@@ -121,7 +127,17 @@
                         }
                     }
                 })
-            }
+            },
+			deleteLinkage(index,option) { //删除联动内容，并检查是否全部删除，全部删除修改isLinkage状态
+				option.linkage.splice(index,1)
+				this.source.isLinkage = false
+				this.source.options.forEach(item => {
+					if (item.linkage.length > 0) {
+						this.source.isLinkage = true
+					}
+				})
+				console.log(this.source.isLinkage)
+			}
         }
 	}
 </script>

@@ -44,11 +44,15 @@
         <!-- 开关 -->
         <van-field name="switch" :label="page.title" v-if="page.type==='switch'">
             <template #input>
+                <span style="margin-right: 10px" :class="{ 'active':page.value === page.inactiveValue }">{{ page.options[0].label }}</span>
                 <van-switch v-model="page.value"
                             :size="page.size"
                             :disabled="page.disabled"
                             :active-value="page.activeValue"
-                            :inactive-value="page.inactiveValue"/>
+                            :inactive-value="page.inactiveValue"
+                            @change="changeLinkage($event,page)"
+                />
+                <span style="margin-left: 10px" :class="{ 'active':page.value === page.activeValue }">{{ page.options[1].label }}</span>
             </template>
         </van-field>
         <!-- 选择器 -->
@@ -69,7 +73,7 @@
         <!-- 单选框 -->
         <van-field name="radio" :label="page.title" v-if="page.type === 'radio'">
             <template #input>
-                <van-radio-group v-model="page.value" :direction="page.direction"
+                <van-radio-group v-model="page.value" :direction="page.direction" @change="changeLinkage($event,page)"
                                  :disabled="page.disabled" :icon-size="page.iconSize">
                     <van-radio v-for="(item, rIndex) in page.options" :key="rIndex"
                                :name="item.value">{{ item.label }}</van-radio>
@@ -176,6 +180,9 @@
 			LineChart,
 		},
 		props: {
+			source: {
+			    required: true
+            },
 			page: {
 				type: Object,
 				required: true
@@ -200,6 +207,8 @@
 			onPickerConfirm(value, page) {
 				page.value = value
 				page.showPicker = false
+                let option = page.options.find(item => item.label === value)
+                this.changeLinkage(option.value,page)
 			},
 			//选择器下拉选项配置
 			checkPickOptions(columns) {
@@ -209,6 +218,62 @@
 				})
 				return options
 			},
+			changeLinkage(val, currentItem) {
+				if (!currentItem.isLinkage) { //没有联动属性
+					return
+                }
+				let type = currentItem.type
+                if  (type === 'switch') { //当前为开关组件，联动其他组件
+                	let optionIndex = 0
+                    if (val === currentItem.activeValue) {
+                    	optionIndex = 1
+                    }
+                    let linkageList = currentItem.options[optionIndex].linkage
+                    this.changeOptions(linkageList)
+
+                } else {
+                	let optionIndex = currentItem.options.findIndex(option => option.value === val)
+					let linkageList = currentItem.options[optionIndex].linkage
+                    this.changeOptions(linkageList)
+                }
+				// console.log(this.source)
+				// console.log(val)
+				// console.log(currentItem)
+            },
+            changeOptions(linkageList) {
+				// console.log(linkageList)
+				if (linkageList.length > 0)  {
+					linkageList.forEach((link) => {
+						let linkUuid = link.uuid
+						this.source.pages.forEach((page) => {
+							if (linkUuid === page.uuid) {
+								page.options = link.options
+                                if (page.type === 'switch') {
+                                	page.inactiveValue = link.options[0].value
+                                    page.activeValue = link.options[1].value
+                                }
+								if (page.type === 'checkbox') { //联动组件为复选框时清空复选框默认值
+									page.value = []
+								} else {
+									page.value = ''
+                                }
+								page.options.forEach(option =>  {
+									if (option.isDefault) {
+										if(page.type === 'picker') {
+											page.value = option.label
+                                        } else if (page.type === 'checkbox') {
+											page.value.push(option.value)
+                                        } else {
+											page.value = option.value
+                                        }
+									}
+								})
+							}
+						})
+					})
+				}
+            }
+
         }
 	}
 </script>
@@ -222,5 +287,8 @@
     /deep/ .van-divider {
         margin: 4px 0;
         background-color: #F5F5F5;
+    }
+    .active {
+        color: #1989fa;
     }
 </style>
