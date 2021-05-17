@@ -16,9 +16,16 @@
                                 </div>
                             </van-col>
                         </van-row>
-                        <div v-if="page.type === 'form'">
-
-                        </div>
+                        <van-form v-if="page.type === 'form'" :key="index"
+                                :label-width="page.labelWidth"
+                                :label-align="page.labelAlign"
+                                :input-align="page.inputAlign"
+                                :colon="page.colon"
+                        >
+                            <template v-for="(formItem, formIndex) in page.itemDataSource.pages">
+                                <preview-item  :page="formItem" :refresh-key="refreshKey" :key="formIndex"></preview-item>
+                            </template>
+                        </van-form>
                         <preview-item v-else :page="page" :refresh-key="refreshKey" :key="index"></preview-item>
                     </template>
                 </div>

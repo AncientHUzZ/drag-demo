@@ -220,7 +220,7 @@
         min-height: 100px;
     }
     /deep/ .van-divider {
-        margin: 8px 0;
+        margin: 4px 0;
         background-color: #F5F5F5;
     }
 </style>
