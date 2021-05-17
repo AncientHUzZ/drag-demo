@@ -201,7 +201,7 @@ export default [
 					{
 						label: '关闭',
 						value: 0,
-						isDefault: false,
+						isDefault: true,
 						linkage:[]
 					},
 					{

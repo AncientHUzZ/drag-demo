@@ -28,7 +28,7 @@
                         <div v-show="linkageOptionFlag" style="overflow-y: auto;height: 80vh">
                             <h3>请添加联动组件拥有的选项</h3>
                             <el-form>
-                                <el-form-item label="添加选项">
+                                <el-form-item label="添加选项" v-show="!checkFirstLink()">
                                     <el-button type="primary" size="small" icon="el-icon-plus" @click="addLinkOption()"></el-button>
                                 </el-form-item>
                             </el-form>
@@ -37,17 +37,17 @@
                                     <h3>序号：{{ index + 1 }}</h3>
                                 </div>
                                 <el-form-item label="label">
-                                    <el-input type="text" v-model="item.label"></el-input>
+                                    <el-input type="text" v-model="item.label" :readonly="checkFirstLink()"></el-input>
                                 </el-form-item>
                                 <el-form-item label="value">
-                                    <el-input type="text" v-model="item.value"></el-input>
+                                    <el-input type="text" v-model="item.value" :readonly="checkFirstLink()"></el-input>
                                 </el-form-item>
                                 <el-form-item label="设为默认">
-                                    <el-switch v-model="item.isDefault" active-text="是" inactive-text="否"
+                                    <el-switch v-model="item.isDefault" active-text="是" inactive-text="否" :disabled="checkFirstLink()"
                                                @change="setLinkDefaultValue($event, index)"
                                     ></el-switch>
                                 </el-form-item>
-                                <el-form-item label="删除该行">
+                                <el-form-item label="删除该行" v-show="!checkFirstLink()">
                                     <el-button type="primary" size="small" icon="el-icon-minus"
                                                @click="deleteLinkOption(index)"></el-button>
                                 </el-form-item>
@@ -99,18 +99,33 @@
 					optionIndex: '',
 					uuid: '',
 					options: []
-				}
+				},
+                isFirstDefault: false
             }
         },
         methods: {
+			checkFirstLink() { //判断是否是添加第一个联动内容
+				let firstFlag = true
+				// console.log(this.source)
+			    this.source.options.forEach(item => {
+                    if (item.linkage.length > 0 ) {
+                    	if (item.linkage.find(link => link.uuid === this.linkComponent.uuid)){
+							firstFlag = false
+                        }
+                    }
+                })
+                return firstFlag
+            },
 			selectLinkage(linkComponent) { //获取被联动组件的信息
 				this.linkComponent = linkComponent
 				this.linkage = {
 					optionIndex: '',
 					uuid: linkComponent.uuid,
+                    name: linkComponent.title,
 					options:[]
 				}
 				this.linkageItemFlag = true
+                this.$forceUpdate()
 			},
 			clear() { //初始化模态框内容
 				this.$emit('close')
@@ -119,9 +134,32 @@
 				this.switchLink = ''
 				this.$refs.linkage.clear()
 			},
-			changeLinkOptions(label,index) { //更换添加联动内容的当前组件选项
+			changeLinkOptions(val,index) { //更换添加联动内容的当前组件选项
 				this.linkageOptionFlag = true
 				this.linkage.optionIndex = index
+				/**
+                 * 是第一次添加，把被联动组件的选项值先对应到当前组件的默认值选项上，
+                 * 如果当前组件没有设置默认值，则对应上用户第一个选择的选项上
+				 */
+				if (this.checkFirstLink()) {
+                    if (this.source.value !== '') { //有默认值
+                        if (val === this.source.value) {
+                        	this.isFirstDefault = true
+							this.linkage.options = []
+							this.linkComponent.options.forEach(option => {
+								this.linkage.options.push(option)
+                            })
+                        } else {
+                        	this.isFirstDefault = false
+							this.linkage.options = []
+						}
+                    } else { //无默认值，在第一次选择的选项中添加
+						this.linkage.options = []
+						this.linkComponent.options.forEach(option => {
+							this.linkage.options.push(option)
+						})
+                    }
+                }
 			},
 			addLinkOption() { //添加值
 				let type = this.linkComponent.type
@@ -143,7 +181,7 @@
 			},
 			setLinkDefaultValue(newVal, optionIndex) { //设置默认值
 				let type = this.linkComponent.type
-				if (type === 'radio' || type === 'picker') {
+				if (type !== 'checkbox') {
 					this.linkage.options.forEach((item, index) => {
 						item.isDefault = false
 						if (optionIndex === index) {

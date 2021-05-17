@@ -34,7 +34,7 @@
             <div v-for="(item, index) in source.options" :key="index">
                 <h4>联动选项：{{ item.label }}</h4>
                 <p v-for="(link, lIndex) in item.linkage" :key="lIndex" style="margin-left: 20px">
-                    <span>联动组件ID：{{ link.uuid }}</span>
+                    <span>联动组件名称：{{ link.name }}</span>
                     <i class="el-icon-delete" style="color: #6CF;margin-left: 10px;font-size: 20px;cursor: pointer"
                        @click="deleteLinkage(lIndex,item)"></i>
                 </p>
@@ -93,6 +93,7 @@
                 	if (index === linkage.optionIndex) {
                 		let temp = {
                 			uuid: linkage.uuid,
+                            name: linkage.name,
                             options: linkage.options
                         }
                         item.linkage.push(temp)
